@@ -1,0 +1,7 @@
+#pane{
+    -fx-background-image: url("DescricaoChan.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 600 600;
+    -fx-background-position: center center;
+}
+

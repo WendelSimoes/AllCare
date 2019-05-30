@@ -1,0 +1,40 @@
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'cimatec';
+SET SQL_SAFE_UPDATES = 0;
+
+create database Allcare;
+
+use Allcare;
+
+create table Sintoma(
+	cod_sintoma int not null auto_increment,
+	nome varchar(60),    
+	primary key(cod_sintoma));
+
+create table Doenca(	
+	cod_doenca int not null auto_increment,
+	nome varchar(60),
+    descricao varchar(800),	
+	primary key(cod_doenca));
+
+create table Doenca_x_Sintoma(
+	cod_sintoma int,
+	cod_doenca int,
+	primary key(cod_doenca,cod_sintoma),
+	foreign key(cod_sintoma) references Sintoma(cod_sintoma),
+	foreign key(cod_doenca) references Doenca(cod_doenca));
+
+create table Medico(
+	id_user varchar(60),
+	senha varchar(60),
+	primary key(id_user));
+
+create table Paciente(
+	id_user varchar(60),
+	senha varchar(60),
+	primary key(id_user));
+ 
+
+        
+    
+    
+    

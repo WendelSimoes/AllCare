@@ -1,0 +1,12 @@
+.text-area {
+    -fx-prompt-text-fill: #d8d6d6;
+    -fx-text-fill: #ffffff;
+}
+
+.text-area .content {
+    -fx-border-width: 2px;
+    -fx-border-color: #ff0000;
+    -fx-background-color: linear-gradient(#1081f2, #4ba4fc);
+}
+
+
