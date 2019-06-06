@@ -113,9 +113,7 @@ public class TelaInicialController {
                     errorDuplicate = Login.Cadastro(telaInicialModel.getPaciente(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos());
                     if(errorDuplicate.isEmpty()){               
                         telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldUser().setText("");
                         telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldPass().setText("");
                         NovoJOptionPaneView.display("Cadastro efetuado", true);
                     }else{
                         telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
@@ -126,9 +124,7 @@ public class TelaInicialController {
                     errorDuplicate = Login.Cadastro(telaInicialModel.getMedico(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos());
                     if(errorDuplicate.isEmpty()){
                         telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldUser().setText("");
                         telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldPass().setText("");
                         NovoJOptionPaneView.display("Cadastro efetuado", true);
                     }else{
                         telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());

@@ -3,6 +3,8 @@ package FrontEnd.Telas.Controllers;
 import DataBase.Banco_de_Valores;
 import FrontEnd.AllCareApplication;
 import FrontEnd.Telas.Models.TelaDoutorModel;
+import FrontEnd.Telas.Views.DesejaMesmoApagarView;
+import FrontEnd.Telas.Views.NovoJOptionPaneView;
 import FrontEnd.Telas.Views.TelaDoutorView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -94,11 +96,18 @@ public class TelaDoutorController {
         return new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                Banco_de_Valores.deletarDoenca(AllCareApplication.getCON().getDeclaracao_de_comandos(), AllCareApplication.getCON().getResult_consultas(), telaDoutorView.getListDoencas().getSelectionModel().getSelectedItem());
-                telaDoutorView.getButtonApagar().setDisable(true);
-                telaDoutorView.getButtonEdit().setDisable(true);
-                telaDoutorModel.atualizar();
-                atualizarLista();
+                if(DesejaMesmoApagarView.display()){
+                    Banco_de_Valores.deletarDoenca(AllCareApplication.getCON().getDeclaracao_de_comandos(), AllCareApplication.getCON().getResult_consultas(), telaDoutorView.getListDoencas().getSelectionModel().getSelectedItem());
+                    telaDoutorView.getButtonApagar().setDisable(true);
+                    telaDoutorView.getButtonEdit().setDisable(true);
+                    telaDoutorModel.atualizar();
+                    atualizarLista();
+                    NovoJOptionPaneView.display("Doenca apagada", true);
+                }else{
+                    telaDoutorView.getListDoencas().getSelectionModel().clearSelection();
+                    telaDoutorView.getButtonApagar().setDisable(true);
+                    telaDoutorView.getButtonEdit().setDisable(true);
+                }
             }
         };
     }

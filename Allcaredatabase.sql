@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.11, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `allcare` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `allcare`;
+-- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
 -- Host: localhost    Database: allcare
 -- ------------------------------------------------------
--- Server version	8.0.11
+-- Server version	8.0.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +29,7 @@ CREATE TABLE `doenca` (
   `nome` varchar(60) DEFAULT NULL,
   `descricao` varchar(800) DEFAULT NULL,
   PRIMARY KEY (`cod_doenca`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +38,7 @@ CREATE TABLE `doenca` (
 
 LOCK TABLES `doenca` WRITE;
 /*!40000 ALTER TABLE `doenca` DISABLE KEYS */;
-INSERT INTO `doenca` VALUES (3,'Gripe','Propagação: Aérea\nTratamento: Pode ser tratado pela própria pessoa\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Clínico geral\nDescrição geral: Uma infecção viral comum que pode ser fatal, especialmente em grupos de alto risco'),(4,'AIDS','Propagação: Sexualmente\nTratamento: Não possui cura\nDuração: Crônica\nDiagnosticável: Sim\nMédico(s): Infectologista e Clínico geral\nDescrição geral: A AIDS é causada pelo vírus HIV, que interfere na capacidade do organismo de combater infecções'),(5,'Catapora','Propagação: Contato com infectados\nTratamento: Tratado pela própria pessoa\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Pediatra e Clínico geral\nDescrição geral: Infecção viral altamente contagiosa que causa uma irritação cutânea com bolhas na pele'),(6,'Sarampo','Propagação: Contato com infectados\nTratamento: Auxílio médico\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Infectologista, pediatra e clínico geral\nDescrição geral: Infecção viral que é grave para crianças pequenas, mas de fácil prevenção por meio de vacina\n'),(7,'Caxumba','Propagação: Contato com infectados\nTratamento: Auxílio médico\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Infectologista e clínico geral\nDescrição geral: Infecção viral que afeta as glândulas salivares. Pode ser facilmente prevenida por meio de vacinação'),(8,'Herpes labial','Propagação: Contato labial com infectados\nTratamento: Não tem cura\nDuração: Crônica\nDiagnosticável: Sim\nMédico(s): Clínico geral e dermatologista\nDescrição geral: Infecção pelo vírus herpes simplex próxima à borda dos lábios');
+INSERT INTO `doenca` VALUES (3,'Gripe','Propagação: Aérea\nTratamento: Pode ser tratado pela própria pessoa\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Clínico geral\nDescrição geral: Uma infecção viral comum que pode ser fatal, especialmente em grupos de alto risco'),(4,'AIDS','Propagação: Sexualmente\nTratamento: Não possui cura\nDuração: Crônica\nDiagnosticável: Sim\nMédico(s): Infectologista e Clínico geral\nDescrição geral: A AIDS é causada pelo vírus HIV, que interfere na capacidade do organismo de combater infecções'),(5,'Catapora','Propagação: Contato com infectados\nTratamento: Tratado pela própria pessoa\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Pediatra e Clínico geral\nDescrição geral: Infecção viral altamente contagiosa que causa uma irritação cutânea com bolhas na pele'),(6,'Sarampo','Propagação: Contato com infectados\nTratamento: Auxílio médico\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Infectologista, pediatra e clínico geral\nDescrição geral: Infecção viral que é grave para crianças pequenas, mas de fácil prevenção por meio de vacina\n'),(7,'Caxumba','Propagação: Contato com infectados\nTratamento: Auxílio médico\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Infectologista e clínico geral\nDescrição geral: Infecção viral que afeta as glândulas salivares. Pode ser facilmente prevenida por meio de vacinação'),(8,'Herpes labial','Propagação: Contato labial com infectados\nTratamento: Não tem cura\nDuração: Crônica\nDiagnosticável: Sim\nMédico(s): Clínico geral e dermatologista\nDescrição geral: Infecção pelo vírus herpes simplex próxima à borda dos lábios'),(9,'Dengue','Propagação: Mosquito Aedes aegypti\nTratamento: Ingestão de líquidos e analgésicos\nDuração: Curto prazo\nDiagnosticável: Sim\nMédico(s): Infectologista\nDescrição geral: Doença viral transmitida por mosquitos que ocorre em áreas tropicais e subtropicais');
 /*!40000 ALTER TABLE `doenca` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +65,7 @@ CREATE TABLE `doenca_x_sintoma` (
 
 LOCK TABLES `doenca_x_sintoma` WRITE;
 /*!40000 ALTER TABLE `doenca_x_sintoma` DISABLE KEYS */;
-INSERT INTO `doenca_x_sintoma` VALUES (1,3),(1,4),(1,6),(2,3),(2,6),(2,7),(3,3),(4,3),(4,7),(5,3),(5,6),(6,3),(6,4),(6,5),(6,6),(6,7),(8,3),(8,4),(8,6),(9,4),(10,4),(11,4),(12,4),(13,3),(13,4),(13,5),(13,6),(13,7),(14,3),(14,5),(14,7),(15,5),(16,5),(16,6),(16,8),(17,6),(18,7),(18,8),(19,8);
+INSERT INTO `doenca_x_sintoma` VALUES (1,3),(1,4),(1,6),(2,3),(2,6),(2,7),(2,9),(3,3),(3,9),(4,3),(4,7),(4,9),(5,3),(5,6),(6,3),(6,4),(6,5),(6,6),(6,7),(6,9),(8,3),(8,4),(8,6),(9,4),(9,9),(10,4),(11,4),(12,4),(13,3),(13,4),(13,5),(13,6),(13,7),(13,9),(14,3),(14,5),(14,7),(14,9),(15,5),(16,5),(16,6),(16,8),(17,6),(18,7),(18,8),(19,8),(20,9);
 /*!40000 ALTER TABLE `doenca_x_sintoma` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +89,7 @@ CREATE TABLE `medico` (
 
 LOCK TABLES `medico` WRITE;
 /*!40000 ALTER TABLE `medico` DISABLE KEYS */;
-INSERT INTO `medico` VALUES ('joao','joao');
+INSERT INTO `medico` VALUES ('joao','joao'),('wendel','021011wd');
 /*!40000 ALTER TABLE `medico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +113,7 @@ CREATE TABLE `paciente` (
 
 LOCK TABLES `paciente` WRITE;
 /*!40000 ALTER TABLE `paciente` DISABLE KEYS */;
-INSERT INTO `paciente` VALUES ('wendelthebeast','wendelthebeast');
+INSERT INTO `paciente` VALUES ('wendel','021011wd'),('wendelthebeast','wendelthebeast');
 /*!40000 ALTER TABLE `paciente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +128,7 @@ CREATE TABLE `sintoma` (
   `cod_sintoma` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`cod_sintoma`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +137,7 @@ CREATE TABLE `sintoma` (
 
 LOCK TABLES `sintoma` WRITE;
 /*!40000 ALTER TABLE `sintoma` DISABLE KEYS */;
-INSERT INTO `sintoma` VALUES (1,'Tosse'),(2,'Dores no corpo'),(3,'Calafrios'),(4,'Dor de cabeça'),(5,'Congestão nasal'),(6,'Fadiga'),(8,'Dor na garganta'),(9,'Náusea'),(10,'Vômito'),(11,'Diarreia'),(12,'Dores genitais'),(13,'Febre'),(14,'Perda de apetite'),(15,'Coceira'),(16,'Erupções'),(17,'Conjutivite'),(18,'Inchaço'),(19,'Lesão bucal');
+INSERT INTO `sintoma` VALUES (1,'Tosse'),(2,'Dores no corpo'),(3,'Calafrios'),(4,'Dor de cabeça'),(5,'Congestão nasal'),(6,'Fadiga'),(8,'Dor na garganta'),(9,'Náusea'),(10,'Vômito'),(11,'Diarreia'),(12,'Dores genitais'),(13,'Febre'),(14,'Perda de apetite'),(15,'Coceira'),(16,'Erupções'),(17,'Conjutivite'),(18,'Inchaço'),(19,'Lesão bucal'),(20,'Dor nos olhos');
 /*!40000 ALTER TABLE `sintoma` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,4 +158,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-05 17:38:44
+-- Dump completed on 2019-06-05 23:17:55

@@ -126,7 +126,7 @@ public class MostrarDescricaoView {
             GridPane.setConstraints(labelDiagnosticavelResult, 1, 3);
             
             //Label médicosResult
-            i = descricao.indexOf("Médico(s)") + 12;
+            i = descricao.indexOf("Médico(s)") + 11;
             z = descricao.indexOf("Descrição geral") - 1;
             Label labelMedicosResult = new Label(descricao.substring(i, z));
             labelMedicosResult.setStyle(DefaultStyles.getSTYLE_PADRAO_LABELS_RIGHT_DESCRICAO());

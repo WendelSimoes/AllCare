@@ -73,7 +73,6 @@ public class DescricaoView extends BorderPane {
             //Area descrição
             areaDescricaoGeral = new TextArea();
             areaDescricaoGeral.setPrefSize(230, 75);
-            areaDescricaoGeral.setFocusTraversable(false);
             areaDescricaoGeral.setWrapText(true);
             areaDescricaoGeral.setPromptText("Descrição geral");
             areaDescricaoGeral.setTextFormatter(new TextFormatter<String>(change -> change.getControlNewText().length() <= DefaultStyles.getTEXT_AREA_MAX_CHARS() ? change : null));
