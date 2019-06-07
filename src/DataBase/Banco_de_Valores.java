@@ -76,7 +76,7 @@ public class Banco_de_Valores {
     public static ArrayList<Sintoma> puxa_Sintomas(Statement declarador, ResultSet retorno){
         ArrayList<Sintoma> sintomas = new ArrayList<>();
         try {
-            retorno = declarador.executeQuery("Select * from Sintoma");
+            retorno = declarador.executeQuery("Select * from Sintoma order by nome");
             while(retorno != null && retorno.next()){
                 Sintoma sint = new Sintoma();
                 sint.setCod_sintoma(retorno.getInt("cod_sintoma"));
@@ -120,7 +120,7 @@ public class Banco_de_Valores {
             y = codInDoencas.lastIndexOf(",");
             codInDoencas = codInDoencas.substring(0, y);
             try {
-                rv = declarador.executeQuery("select Doenca.* from Doenca where cod_doenca in ("+codInDoencas+")");
+                rv = declarador.executeQuery("select Doenca.* from Doenca where cod_doenca in ("+codInDoencas+") order by Nome");
             } catch (Exception e) {
                 System.out.println("Deu problem in the bank: "+e.getMessage()); 
             }
@@ -169,7 +169,7 @@ public class Banco_de_Valores {
     public static ArrayList<Doenca> getAllDoencas(Statement declarador, ResultSet rv){
         ArrayList<Doenca> doencas = new ArrayList<>();
         try {
-            rv = declarador.executeQuery("select Doenca.* from Doenca");
+            rv = declarador.executeQuery("select Doenca.* from Doenca order by nome");
         } catch (Exception e) {
             System.out.println("Erro ao pegar doenças: "+e.getMessage()); 
         }
@@ -193,7 +193,7 @@ public class Banco_de_Valores {
         
         try {
             rv = declarador.executeQuery("SELECT sintoma.nome FROM sintoma, doenca, doenca_x_sintoma WHERE sintoma.cod_sintoma = doenca_x_sintoma.cod_sintoma AND "
-                                        + "doenca_x_sintoma.cod_doenca = doenca.cod_doenca AND doenca.nome = '" + doencaSelecionada + "'");
+                                        + "doenca_x_sintoma.cod_doenca = doenca.cod_doenca AND doenca.nome = '" + doencaSelecionada + "' order by nome");
         } catch (Exception e) {
             System.out.println("Erro ao pegar doenças: "+e.getMessage()); 
         }
