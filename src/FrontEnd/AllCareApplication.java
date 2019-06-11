@@ -13,9 +13,14 @@ import FrontEnd.Telas.Views.OhayoGoodByeView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/*
+Classe destinada à instancia e disponibilidade estatica de todos os crontrolers
+para qualquer outra classe, permitindo-as obter e exibir qualquer tela
+*/
 public class AllCareApplication extends Application {
     
     private final static ConectionFactory CON = new ConectionFactory();;
+    private static boolean conected = true;
     
     private static TelaInicialController telaInicialController;
 
@@ -50,16 +55,22 @@ public class AllCareApplication extends Application {
         telaInicialController.show();
     }
     
+    //Conecção com o banco de dados
     public static void conectar(){
         if(CON.conectar()){
             System.out.println("A conexão foi estabelecida com success");
         }else{
             System.out.println("A conexão não foi estabelecida :/");
+            conected = false;
         }
     }
 
     public static ConectionFactory getCON() {
         return CON;
+    }
+    
+    public static boolean isConected(){
+        return conected;
     }
 
     public static TelaInicialController getTelaInicialController() {

@@ -19,6 +19,7 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela de exibição de descrição da doença selecionada na tela de paciente
 public class MostrarDescricaoView {
     
     //Stage & scene

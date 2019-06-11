@@ -17,6 +17,7 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela intuitiva para saudar e se despedir do usuário, despertando os sentimentos internos do mesmo
 public class OhayoGoodByeView {
     
     //Stage & scene

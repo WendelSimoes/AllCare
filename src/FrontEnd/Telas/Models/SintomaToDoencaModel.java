@@ -10,7 +10,9 @@ import javafx.scene.layout.VBox;
 
 public class SintomaToDoencaModel {
     
+    //Todos os sintomas para preencher a lista de escolha
     private ArrayList<Sintoma> todosSintomas;
+    //Sintomas selecionados, caso sejá uma edição de doença ou caso tenha-se se selecionado naturalmente
     private ArrayList<Sintoma> sintomasSelecionados;
     
     public SintomaToDoencaModel(){
@@ -20,6 +22,7 @@ public class SintomaToDoencaModel {
         sintomasSelecionados = AllCareApplication.getDoencaController().getDoencaModel().getSintomas_escolhidos();
     }
     
+    //Obter checkBox nomeadas para usar na view
     public ArrayList<CheckBox> getItems(){
         ArrayList<CheckBox> items = new ArrayList<CheckBox>();
         for(Sintoma sintoma : todosSintomas){
@@ -36,6 +39,7 @@ public class SintomaToDoencaModel {
         return items;
     }
     
+    //Seta todos os sintomas escolhidos para a variavel sintomas escolhidos na tela doença
     public void concluir(ArrayList<String> sintomas){
         sintomasSelecionados.clear();
         for(String sintoma : sintomas){

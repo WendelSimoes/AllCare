@@ -19,6 +19,7 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela para exibição de messagens negativas ou positivas
 public class NovoJOptionPaneView {
     
     //Stage & scene

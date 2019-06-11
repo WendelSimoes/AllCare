@@ -10,15 +10,19 @@ import javafx.scene.layout.VBox;
 
 public class ApagarSintomasModel {
     
+    //ArrayList de todos os sintomas, para carregar a lista de sintomas disponiveis para exclusão
     private ArrayList<Sintoma> todosSintomas;
+    //ArrayList de sintomas escolhidos para exclusão
     private ArrayList<Sintoma> sintomasSelecionados;
     
+    //Contrutor preenchendo os sintomas existentes para exclusão
     public ApagarSintomasModel(){
         todosSintomas = new ArrayList<Sintoma>();
         sintomasSelecionados = new ArrayList<Sintoma>();
         todosSintomas = Banco_de_Valores.puxa_Sintomas(AllCareApplication.getCON().getDeclaracao_de_comandos(), AllCareApplication.getCON().getResult_consultas());
     }
     
+    //Obtenção de checkBox's com nome dos sintomas para preencher a lista na view
     public ArrayList<CheckBox> getItems(){
         ArrayList<CheckBox> items = new ArrayList<CheckBox>();
         for(Sintoma sintoma : todosSintomas){
@@ -30,6 +34,7 @@ public class ApagarSintomasModel {
         return items;
     }
     
+    //Apagar sintomas do banco a partir de um arrayList de strings
     public void apagar(ArrayList<String> sintomas){
         for(String sintoma : sintomas){
             for(Sintoma sintomax : todosSintomas){

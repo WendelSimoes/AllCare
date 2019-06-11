@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+//Tela destinada ao usuário doutor do programa, permitindo-o adicionar e apagar sintomas e adicionar, apagar e editar doenças
 public class TelaDoutorView extends BorderPane{
     
     //Stage & scene

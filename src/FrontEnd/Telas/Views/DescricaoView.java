@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela para adição de descrição à doença, aberta ao clique do botão "Descrição" na tela de doença
 public class DescricaoView extends BorderPane {
     
     //Stage & scene

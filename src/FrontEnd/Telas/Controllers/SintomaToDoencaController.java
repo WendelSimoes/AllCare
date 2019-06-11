@@ -35,13 +35,14 @@ public class SintomaToDoencaController {
         return new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                //Pegar checkboxs indiretamente
                 ArrayList<CheckBox> boxs = new ArrayList<>();
                 for(int i = 0; i < sintomaToDoencaView.getLayoutCheckBoxs().getChildren().size(); i++){
                     boxs.add((CheckBox) sintomaToDoencaView.getLayoutCheckBoxs().getChildren().get(i));
                 }
                 
+                //Verificar se foi selecionado algo
                 boolean temSelecionado = false;
-        
                 for(CheckBox boxx : boxs){
                     if(boxx.isSelected()){
                         temSelecionado = true;

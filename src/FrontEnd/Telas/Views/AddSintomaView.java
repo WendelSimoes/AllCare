@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela para adição de sintomas ao banco
 public class AddSintomaView extends HBox{
     
     //Stage & scene

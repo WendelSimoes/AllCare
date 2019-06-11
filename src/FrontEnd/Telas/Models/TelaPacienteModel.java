@@ -8,9 +8,13 @@ import java.util.ArrayList;
 
 public class TelaPacienteModel {
     
+    //Usado para preencher a lista de doenças
     private ArrayList<Doenca> todasDoencas;
+    //Usado para preencher as checkboxs de sintomas
     private ArrayList<Sintoma> todosSintomas;
+    //Sintomas selecionados
     private ArrayList<Sintoma> sintomas_escolhidos;
+    //Doenças filtradas
     private ArrayList<Doenca> doencas;
     
     public TelaPacienteModel(){

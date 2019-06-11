@@ -8,6 +8,7 @@ public class TelaInicialModel {
     
     private Usuario user;
     
+    //Fazer paciente com nome e senha
     public Usuario getPaciente(String user, String pass){
         this.user = new Paciente();
         this.user.setId_user(user);
@@ -15,6 +16,7 @@ public class TelaInicialModel {
         return this.user;
     }
     
+    //Fazer medico com nome e senha
     public Usuario getMedico(String user, String pass){
         this.user = new Medico();
         this.user.setId_user(user);

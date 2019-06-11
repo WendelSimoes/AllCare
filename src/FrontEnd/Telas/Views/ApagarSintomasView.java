@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela para apagar sintomas do banco
 public class ApagarSintomasView extends BorderPane {
     
     //Stage & scene

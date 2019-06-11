@@ -22,7 +22,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-
+//Tela inicial onde se pode entrar e cadastrar no programa, podendo levar a tela de paciente e doutor
 public class TelaInicialView extends BorderPane{
     
     //Stage & scene

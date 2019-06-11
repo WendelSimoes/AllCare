@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela para cadastro de doença no banco, com botões que chamam as telas de sintomas e dsscrição
 public class DoencaView extends HBox{
  
     //Stage & scene

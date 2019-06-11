@@ -15,6 +15,7 @@ public class DoencaController {
     private DoencaModel doencaModel;
     private DoencaView doencaView;
     
+    //Build para adição de doença
     public void build(){
         doencaModel = new DoencaModel();
         doencaView = new DoencaView();
@@ -24,6 +25,7 @@ public class DoencaController {
         doencaView.addSceneListener(eventKeyENTER());
     }
     
+    //Build para edição de doença, pegando o nome, sintomas e descrição antigos
     public void build(String doencaSelecionada){
         doencaModel = new DoencaModel(doencaSelecionada);
         doencaView = new DoencaView();

@@ -25,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+//Tela destinada ao usuário paciente do programa, permitindo filtrar doenças com base nos sintomas selecionados
 public class TelaPacienteView extends BorderPane {
     
     //Stage & scene

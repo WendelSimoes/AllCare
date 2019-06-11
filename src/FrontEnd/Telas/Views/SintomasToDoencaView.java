@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela para adicionar sintomas à doença, aberta ao clique do botão "sintomas" na tela de doenca
 public class SintomasToDoencaView extends BorderPane {
     
     //Stage & scene

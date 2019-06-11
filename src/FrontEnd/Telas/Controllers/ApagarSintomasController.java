@@ -35,11 +35,13 @@ public class ApagarSintomasController {
         return new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                //Pegar todas as checkbox de maneira indireta
                 ArrayList<CheckBox> boxs = new ArrayList<>();
                 for(int i = 0; i < apagarSintomasView.getLayoutCheckBoxs().getChildren().size(); i++){
                     boxs.add((CheckBox) apagarSintomasView.getLayoutCheckBoxs().getChildren().get(i));
                 }
                 
+                //Verificar se o usuario selecionou algo
                 boolean temSelecionado = false;
                 for(CheckBox boxx : boxs){
                     if(boxx.isSelected()){
@@ -47,6 +49,7 @@ public class ApagarSintomasController {
                     }
                 }
                 
+                //Pegar nomes das boxs selecionadas
                 if(temSelecionado){
                     ArrayList <String> sintomas = new ArrayList<>();
                     for(CheckBox box : boxs){

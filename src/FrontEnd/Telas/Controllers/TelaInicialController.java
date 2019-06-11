@@ -36,41 +36,57 @@ public class TelaInicialController {
         telaInicialView.getWindow().hide();
     }
     
+    //Varios "if's" para atender aos requisitos de entrada 
     public EventHandler<ActionEvent> eventButtonEntrar(){
         return new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                //Verificar se todos os campos foram preenchidos
                 if(telaInicialView.getRadioPatient().isSelected() && !telaInicialView.getFieldUser().getText().isEmpty() && !telaInicialView.getFieldPass().getText().isEmpty()){
-                    if(Login.Logar(telaInicialModel.getPaciente(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos(),AllCareApplication.getCON().getResult_consultas())){
-                        telaInicialView.getRadioPatient().setSelected(true);
-                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldUser().setText("");
-                        telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldPass().setText("");
-                        AllCareApplication.getTelaInicialController().hide();     
-                        AllCareApplication.getTelaPacienteController().build();
-                        AllCareApplication.getTelaPacienteController().show();
-                        NovoJOptionPaneView.display("Login bem sucedido", true);
+                    //Verificar se a conexão funfou
+                    if(AllCareApplication.isConected()){
+                        //Verificar se o user existe no banco
+                        if(Login.Logar(telaInicialModel.getPaciente(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos(),AllCareApplication.getCON().getResult_consultas())){
+                            telaInicialView.getRadioPatient().setSelected(true);
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            telaInicialView.getFieldUser().setText("");
+                            telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            telaInicialView.getFieldPass().setText("");
+                            AllCareApplication.getTelaInicialController().hide();     
+                            AllCareApplication.getTelaPacienteController().build();
+                            AllCareApplication.getTelaPacienteController().show();
+                            NovoJOptionPaneView.display("Login bem sucedido", true);
+                        }else{
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
+                            telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
+                            NovoJOptionPaneView.display("Usuário ou senha não reconhecidos", false);
+                        }
                     }else{
-                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
-                        telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
-                        NovoJOptionPaneView.display("Usuário ou senha não reconhecidos", false);
+                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                        telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                        NovoJOptionPaneView.display("Sem conexão", false);
                     }
                 } else if(telaInicialView.getRadioDoctor().isSelected() && !telaInicialView.getFieldUser().getText().isEmpty() && !telaInicialView.getFieldPass().getText().isEmpty()){
-                    if(Login.Logar(telaInicialModel.getMedico(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos(),AllCareApplication.getCON().getResult_consultas())){
-                        telaInicialView.getRadioPatient().setSelected(true);
-                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldUser().setText("");
-                        telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        telaInicialView.getFieldPass().setText("");
-                        AllCareApplication.getTelaInicialController().hide();
-                        AllCareApplication.getTelaDoutorController().build();
-                        AllCareApplication.getTelaDoutorController().show();
-                        NovoJOptionPaneView.display("Login bem sucedido", true);
+                    if(AllCareApplication.isConected()){
+                        if(Login.Logar(telaInicialModel.getMedico(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos(),AllCareApplication.getCON().getResult_consultas())){
+                            telaInicialView.getRadioPatient().setSelected(true);
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            telaInicialView.getFieldUser().setText("");
+                            telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            telaInicialView.getFieldPass().setText("");
+                            AllCareApplication.getTelaInicialController().hide();
+                            AllCareApplication.getTelaDoutorController().build();
+                            AllCareApplication.getTelaDoutorController().show();
+                            NovoJOptionPaneView.display("Login bem sucedido", true);
+                        }else{
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
+                            telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
+                            NovoJOptionPaneView.display("Usuário ou senha não reconhecidos", false);
+                        }
                     }else{
-                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
-                        telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
-                        NovoJOptionPaneView.display("Usuário ou senha não reconhecidos", false);
+                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                        telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                        NovoJOptionPaneView.display("Sem conexão", false);
                     }
                 } else if(telaInicialView.getFieldUser().getText().isEmpty() || telaInicialView.getFieldPass().getText().isEmpty()){
                     if(telaInicialView.getFieldUser().getText().isEmpty()){
@@ -89,12 +105,15 @@ public class TelaInicialController {
         };
     }
     
+    //Varios "if's" para atender aos requisitos de cadastro
     public EventHandler<ActionEvent> eventButtonCadastrar(){
         return new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
+                //Verificar se o user já não existe no banco
                 String errorDuplicate = "";
-
+                
+                //Verificar se todos os campos foram preenchidos
                 if(telaInicialView.getFieldUser().getText().isEmpty() || telaInicialView.getFieldPass().getText().isEmpty()){
                     if(telaInicialView.getFieldUser().getText().isEmpty()){
                         telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
@@ -110,25 +129,38 @@ public class TelaInicialController {
                 }
 
                 if(telaInicialView.getRadioPatient().isSelected() && !telaInicialView.getFieldUser().getText().isEmpty() && !telaInicialView.getFieldPass().getText().isEmpty()){
-                    errorDuplicate = Login.Cadastro(telaInicialModel.getPaciente(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos());
-                    if(errorDuplicate.isEmpty()){               
+                    //Verificar se a conexão funfou
+                    if(AllCareApplication.isConected()){
+                        errorDuplicate = Login.Cadastro(telaInicialModel.getPaciente(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos());
+                        if(errorDuplicate.isEmpty()){               
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            NovoJOptionPaneView.display("Cadastro efetuado", true);
+                        }else{
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
+                            NovoJOptionPaneView.display("Nome de usuário já utilizado", false);
+                        }
+                    }else{
                         telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
                         telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        NovoJOptionPaneView.display("Cadastro efetuado", true);
-                    }else{
-                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
-                        NovoJOptionPaneView.display("Nome de usuário já utilizado", false);
+                        NovoJOptionPaneView.display("Sem conexão", false);
                     }
                 }
                 if(telaInicialView.getRadioDoctor().isSelected() && !telaInicialView.getFieldUser().getText().isEmpty() && !telaInicialView.getFieldPass().getText().isEmpty()){
-                    errorDuplicate = Login.Cadastro(telaInicialModel.getMedico(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos());
-                    if(errorDuplicate.isEmpty()){
+                    if(AllCareApplication.isConected()){
+                        errorDuplicate = Login.Cadastro(telaInicialModel.getMedico(telaInicialView.getFieldUser().getText(), telaInicialView.getFieldPass().getText()), AllCareApplication.getCON().getDeclaracao_de_comandos());
+                        if(errorDuplicate.isEmpty()){
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
+                            NovoJOptionPaneView.display("Cadastro efetuado", true);
+                        }else{
+                            telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
+                            NovoJOptionPaneView.display("Nome de usuário já utilizado", false);
+                        }
+                    }else{
                         telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
                         telaInicialView.getFieldPass().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD());
-                        NovoJOptionPaneView.display("Cadastro efetuado", true);
-                    }else{
-                        telaInicialView.getFieldUser().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
-                        NovoJOptionPaneView.display("Nome de usuário já utilizado", false);
+                        NovoJOptionPaneView.display("Sem conexão", false);
                     }
                 }
             }

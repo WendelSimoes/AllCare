@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+//Tela para confirmação de exclusão de doença do banco
 public class DesejaMesmoApagarView {
     
     //Stage & scene

@@ -8,12 +8,18 @@ import java.util.ArrayList;
 
 public class DoencaModel {
     
+    //ArrayList de todas as doenças, necessarias para a verificação de já existencia pelo nome
     private ArrayList<Doenca> todas_doencas;
+    //ArrayList de todos os sintomas, para caso sejá uma edição de doença, pegar os sintomas antigos
     private ArrayList<Sintoma> todosSintomas;
+    //ArrayList de sintomas escolhidos na tela "SintomaToDoenca", o que sobrescreve os sintomas antigos, caso sejá uma edição
     private ArrayList<Sintoma> sintomas_escolhidos;
+    //Descrição utilizada na criação da doença, pega na tela de descrição, podendo já estar preenchida caso sejá uma edição
     private String descricao;
+    //String para nomear a doença, podendo já estar escrito para edição
     private String doencaSelecionada;
     
+    //Construtor para criação de nova doença
     public DoencaModel(){
         descricao = "";
         doencaSelecionada = "";
@@ -24,6 +30,7 @@ public class DoencaModel {
         todosSintomas = Banco_de_Valores.puxa_Sintomas(AllCareApplication.getCON().getDeclaracao_de_comandos(), AllCareApplication.getCON().getResult_consultas());
     }
     
+    //Contrutor para edição
     public DoencaModel(String doencaSelecionada){
         descricao = "";
         this.doencaSelecionada = "";

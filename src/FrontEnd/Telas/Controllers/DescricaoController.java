@@ -17,6 +17,7 @@ public class DescricaoController {
     public void build(){
         descricaoModel = new DescricaoModel();
         descricaoView = new DescricaoView();
+        //Se já há uma descrição feita, atribuir aos campos para edição
         if(!descricaoModel.getDescricao().isEmpty()){
             atualizarGeral();
         }
@@ -28,6 +29,7 @@ public class DescricaoController {
         descricaoView.getWindow().showAndWait();
     }
     
+    //Gambiarra ao concluir para pegar todos os campos e fundir numa string só
     public EventHandler<ActionEvent> eventButtonConcluir(){
         return new EventHandler<ActionEvent>(){
             @Override

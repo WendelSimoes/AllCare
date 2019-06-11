@@ -38,6 +38,7 @@ public class TelaDoutorController {
         telaDoutorView.getListDoencas().getItems().setAll(telaDoutorModel.getItems());
     }
     
+    //Habilitar ou desabilitar os botões apagar e editar caso tenha-se selecionado algo na lista
     public EventHandler<MouseEvent> eventMouseCLickedLista(){
         return new EventHandler<MouseEvent>(){
             @Override

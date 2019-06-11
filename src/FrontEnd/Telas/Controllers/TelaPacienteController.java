@@ -21,9 +21,11 @@ import javafx.stage.WindowEvent;
 public class TelaPacienteController {
     
     private TelaPacienteModel telaPacienteModel;
-    private TelaPacienteView telaPacienteView;  
+    private TelaPacienteView telaPacienteView;
+    //Checkboxs de sintomas
     private ArrayList<CheckBox> boxs;
     
+    //Construir view e model preenchendo as checkboxs
     public void build(){
         telaPacienteModel = new TelaPacienteModel();
         telaPacienteView = new TelaPacienteView();
@@ -38,20 +40,27 @@ public class TelaPacienteController {
         telaPacienteView.getWindow().show();
     }
     
+    //Filtro de pesquisa de sintomas baseado em listener de mudança
     public ChangeListener<String> eventFieldSearch(){
         return new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                //Preenche a lista toda vez que uma algarismo for inserido
                 telaPacienteView.preencherLista(boxs);
+                
+                //Se não tiver nada escrito apos uma mudança, preenche tudo
                 if(telaPacienteView.getFieldSearch().getText().isEmpty()){
                     telaPacienteView.preencherLista(boxs);
                 }else{
+                    //Remove tudo que não começa com o texto do textfield
                     for(CheckBox box : boxs){
                         if(!box.getText().toLowerCase().startsWith(telaPacienteView.getFieldSearch().getText().toLowerCase()) || !box.getText().toUpperCase().startsWith(telaPacienteView.getFieldSearch().getText().toUpperCase())){
                             telaPacienteView.getLayoutCheckBoxs().getChildren().remove(box);
                         }
                     }
                 }
+                
+                //Se nenhum sintoma tiver sendo exibido, o field fica vermelho
                 if(telaPacienteView.getLayoutCheckBoxs().getChildren().isEmpty()){
                     telaPacienteView.getFieldSearch().setStyle(DefaultStyles.getSTYLE_PADRAO_FIELD_ERRO());
                 }else{
@@ -61,6 +70,7 @@ public class TelaPacienteController {
         };
     }
     
+    //Adiciona o evento de click na lista de doenças para chamar a tela de descrição para a selecionada
     public EventHandler<MouseEvent> eventListDoencas(){
         return new EventHandler<MouseEvent>() {
             @Override
@@ -77,9 +87,11 @@ public class TelaPacienteController {
         };
     }
     
+    //Evento acionado após seleção de qualquer sintoma, exibindo somente doenças que tenham todos os sintomas
     public void atualizarListaDoencas(){
         telaPacienteView.getListDoencas().setDisable(false);
         
+        //Separa os sintomas selecionados
         ArrayList<String> sintomas = new ArrayList<>();
         for(CheckBox box : boxs){
             if(box.isSelected()){
@@ -89,6 +101,7 @@ public class TelaPacienteController {
             }
         }
         
+        //Filtra todos os sintomas
         telaPacienteModel.getSintomas_escolhidos().clear();
         for(String nome : sintomas){
             for(Sintoma sintomax : telaPacienteModel.getTodosSintomas()){
@@ -98,6 +111,7 @@ public class TelaPacienteController {
             }
         }
         
+        //Seta as doenças filtradas com base nos sintomas
         telaPacienteModel.setDoencas(Banco_de_Valores.procura_Doencas(telaPacienteModel.getSintomas_escolhidos(), AllCareApplication.getCON().getDeclaracao_de_comandos(), AllCareApplication.getCON().getResult_consultas()));
         ArrayList<String> nomeDoencas = new ArrayList<>();
         for(Doenca doenca : telaPacienteModel.getDoencas()){
